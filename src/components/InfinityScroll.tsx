@@ -31,7 +31,6 @@ export default function InfinityScroll({
     setGifs((prev) => [...prev, ...data]);
     setOffset(next);
   };
-
   useEffect(() => {
     if (inView) {
       getMoreGifs();
