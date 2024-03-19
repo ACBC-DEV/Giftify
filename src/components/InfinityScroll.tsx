@@ -1,9 +1,10 @@
 "use client";
-import Image from "next/image";
+
 import { GifData } from "@/types";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { getGifs } from "@/utils/actions";
+import LoadingImage from "./LoadingImage";
 
 export default function InfinityScroll({
   initialGifs,
@@ -14,16 +15,9 @@ export default function InfinityScroll({
 }) {
   const [gifs, setGifs] = useState(initialGifs);
   const [offset, setOffset] = useState(0);
-  // const [searchTerm, setSearchTerm] = useState(search);
+
   const { ref, inView } = useInView();
 
-  // useEffect(() => {
-  //   if (search !== searchTerm) {
-  //     setGifs([]);
-  //     setOffset(0);
-  //     setSearchTerm(search);
-  //   }
-  // }, [search, searchTerm]);
   const getMoreGifs = async () => {
     const next = offset + 25;
     const { data } = await getGifs(search, { offset: next });
@@ -41,23 +35,15 @@ export default function InfinityScroll({
     <>
       <ul className="flex flex-wrap justify-center items-center ">
         {gifs.map((gif) => (
-          <Suspense
-            key={`${gif.id}-${gif.slug}`}
-            fallback={
-              <div className="w-40 h-40 md:w-80 md:h-80 object-cover bg-[#333] animate-pulse}"></div>
-            }
-          >
-            <picture>
-              <Image
-                className={`size-40 md:size-60 lg:size-80 object-cover  `}
-                src={gif.images.original.webp || ""}
-                unoptimized
-                width={300}
-                height={300}
-                alt={gif.title}
-              />
-            </picture>
-          </Suspense>
+          <>
+            <LoadingImage
+              key={gif.id}
+              src={gif.images.original.webp || gif.images.original.url}
+              alt={gif.title}
+              width={300}
+              height={300}
+            />
+          </>
         ))}
       </ul>
       <span ref={ref} className="loader my-10"></span>

@@ -6,9 +6,8 @@ export default function Home({
 }: {
   searchParams: { q: string };
 }) {
-  // console.log(searchParams.q);
   const searchQ = searchParams.q;
-  // console.log(searchQ);
+
   return (
     <main className="grid place-content-center mt-16">
       <h1 className="mx-auto text-9xl">Gifty</h1>
