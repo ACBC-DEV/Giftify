@@ -1,6 +1,6 @@
 "use server";
 import { ResponseData } from "@/types";
-export async function getGifs(q: string, { offset = 0, limit = 25 } = {}) {
+export async function getGifs(q: string, { offset = 0, limit = 24 } = {}) {
   //console.log(offset, limit);
 
   const rta = await fetch(
