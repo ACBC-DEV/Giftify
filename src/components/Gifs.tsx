@@ -1,4 +1,4 @@
-import { getGifs } from "@utils/actions";
+import { getGifs } from "@/actions/actions";
 import { GifData } from "@/types";
 import InfinityScroll from "./InfinityScroll";
 
@@ -10,7 +10,7 @@ export default async function Gifs({ q }: { q: string }) {
   const { data } = await getGifs(q);
   return (
     <section key={Math.random()} className="rounded-lg">
-      <InfinityScroll initialGifs={data} search={q} />
+      <InfinityScroll initialGifs={q ? data : []} search={q} />
     </section>
   );
 }

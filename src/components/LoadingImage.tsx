@@ -39,13 +39,14 @@ const LoadingImage: React.FC<LoadingImageProps> = ({
         <Image
           src={src}
           alt={alt}
-          // width={300}
-          // height={300}
-          layout="fill"
-          // className={`size-32 md:size-52 lg:size-64 object-cover  `}
+          width={width}
+          height={height}
+          // layout="fill"
+          className={`size-full object-cover  `}
           unoptimized
           // objectFit="cover"
-          onLoadingComplete={() => setIsLoading(false)}
+          onLoad={() => setIsLoading(false)}
+          // onLoadingComplete={() => setIsLoading(false)}
         />
       </picture>
     </div>
