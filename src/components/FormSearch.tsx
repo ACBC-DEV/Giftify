@@ -25,7 +25,7 @@ export default function FormSearch({ search }: { search: string }) {
           setText(e.target.value);
           //setSearch(search);
         }}
-        className="bg-transparent border-4 border-white rounded-3xl px-4 py-6 h-12 w-80 text-lg  hover:bg-white hover:text-black  duration-300 ease-in-out"
+        className="bg-transparent border-4 border-white rounded-3xl focus-visible:ring-0 focus:outline-none focus:ring-offset-transparent px-4 py-6 h-12 w-80 text-lg  hover:bg-white hover:text-black  duration-300 ease-in-out"
       />
     </div>
   );
