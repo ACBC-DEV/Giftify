@@ -19,10 +19,9 @@ export default function InfinityScroll({
   const { ref, inView } = useInView();
 
   const getMoreGifs = async () => {
-    console.log("getMoreGifs");
     const next = offset + 25;
     const { data } = await getGifs(search, { offset: next });
-    console.log(data.length);
+
     if (data.length === 0) return;
     setGifs((prev) => [...prev, ...data]);
     setOffset(next);
@@ -47,7 +46,7 @@ export default function InfinityScroll({
         ))}
       </ul>
 
-      {!search ?? <span ref={ref} className="loader my-10"></span>}
+      {!!search && <span ref={ref} className="loader my-10"></span>}
     </>
   );
 }
