@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -39,14 +40,10 @@ const LoadingImage: React.FC<LoadingImageProps> = ({
         <Image
           src={src}
           alt={alt}
-          width={width}
-          height={height}
-          // layout="fill"
+          fill={true}
           className={`size-full object-cover  `}
           unoptimized
-          // objectFit="cover"
           onLoad={() => setIsLoading(false)}
-          // onLoadingComplete={() => setIsLoading(false)}
         />
       </picture>
     </div>
